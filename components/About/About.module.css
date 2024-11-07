@@ -1,3 +1,23 @@
 .heading {
     text-align: center;
 }
+
+.divTextImg {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    flex-grow: 4;
+    margin: 0 10%;
+    flex-wrap: wrap;
+}
+
+.paragraph {
+    text-align: left;
+    width: 50%;
+}
+
+.img {
+    width: 30%;
+    height: auto;
+}
