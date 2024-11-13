@@ -3,6 +3,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './HeaderMenu.module.css';
 import { useRouter } from 'next/router'
+import { Image } from '@mantine/core';
 
 const links = [
     {
@@ -72,15 +73,12 @@ export default function HeaderMenu() {
         <header className={classes.header}>
             <Container size="md">
                 <div className={classes.inner}>
-                    <Text
+                    <Image
                         onClick={() => router.push('/').catch((error) => console.log(error))}
-                        gradient={{ from: 'red', to: 'violet' }}
-                        variant="gradient" component="span"
-                        size="xl"
+                        src={'/cqbsLogo.png'}
+                        h={30}
                         className={classes.logo}
-                    >
-                        CQBS
-                    </Text>
+                    />
                     <Group gap={5} visibleFrom="sm">
                         {items}
                     </Group>

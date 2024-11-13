@@ -1,4 +1,8 @@
+'use client';
+
 import classes from './Team.module.css';
+import {Image} from "@mantine/core";
+
 
 export default function Team() {
 
@@ -8,33 +12,39 @@ export default function Team() {
             <p className={classes.sub}>Meet the team</p>
             <div className={classes.team}>
                 <div className={classes.member}>
-                    <div className={classes.imgBorder}>
-                        <img
-                            className={classes.teamImg}
-                            src="https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg"
-                            alt="Monkey 1"/>
+                    <div>
+                        <Image
+                            src="/avatar.png"
+                            radius="xl"
+                            h={200}
+                            w={200}
+                            />
                     </div>
-                    <h2>Monkey 1</h2>
+                    <h2>Bongduk Lee</h2>
                     <p>President</p>
                 </div>
                 <div className={classes.member}>
                     <div className={classes.imgBorder}>
-                        <img
-                            className={classes.teamImg}
-                            src="https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg"
-                            alt="Monkey 1"/>
+                        <Image
+                            src="/avatar.png"
+                            radius="xl"
+                            h={200}
+                            w={200}
+                        />
                     </div>
-                    <h2>Monkey 2</h2>
+                    <h2>Jiho Park</h2>
                     <p>Vice President</p>
                 </div>
                 <div className={classes.member}>
                     <div className={classes.imgBorder}>
-                        <img
-                            className={classes.teamImg}
-                            src="https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg"
-                            alt="Monkey 1"/>
+                        <Image
+                            src="/avatar.png"
+                            radius="xl"
+                            h={200}
+                            w={200}
+                        />
                     </div>
-                    <h2>Monkey 3</h2>
+                    <h2>Matthew Riniker</h2>
                     <p>Secretary</p>
                 </div>
             </div>
