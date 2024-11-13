@@ -76,7 +76,7 @@ export default function HeaderMenu() {
                     <Image
                         onClick={() => router.push('/').catch((error) => console.log(error))}
                         src={'/cqbsLogo.png'}
-                        h={30}
+                        h={40}
                         className={classes.logo}
                     />
                     <Group gap={5} visibleFrom="sm">

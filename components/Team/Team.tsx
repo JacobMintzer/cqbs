@@ -14,7 +14,7 @@ export default function Team() {
                 <div className={classes.member}>
                     <div>
                         <Image
-                            src="/avatar.png"
+                            src="/avatar2.png"
                             radius="xl"
                             h={200}
                             w={200}
@@ -26,7 +26,7 @@ export default function Team() {
                 <div className={classes.member}>
                     <div className={classes.imgBorder}>
                         <Image
-                            src="/avatar.png"
+                            src="/avatar2.png"
                             radius="xl"
                             h={200}
                             w={200}
@@ -38,7 +38,7 @@ export default function Team() {
                 <div className={classes.member}>
                     <div className={classes.imgBorder}>
                         <Image
-                            src="/avatar.png"
+                            src="/avatar2.png"
                             radius="xl"
                             h={200}
                             w={200}
