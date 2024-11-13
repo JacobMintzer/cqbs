@@ -5,3 +5,7 @@
 .sub {
     text-align: center;
 }
+
+.formDiv {
+    margin: 0 rem(10%);
+}
