@@ -1,8 +1,12 @@
 import classes from "@/components/Students/Students.module.css";
 import { useForm } from '@mantine/form';
 import { Button, Checkbox, Group, TextInput } from '@mantine/core';
+import { useState } from "react";
 
 export default function Students() {
+
+    const [err, setErr] = useState(0);
+
     const form = useForm({
         mode: 'uncontrolled',
         initialValues: {
@@ -11,7 +15,7 @@ export default function Students() {
         },
 
         validate: {
-            email: (value) => (/^\S+@ucsd.edu$/.test(value) ? null : 'Invalid' +
+            email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid' +
                 ' email'),
         },
     });
@@ -25,7 +29,10 @@ export default function Students() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(values)
-            }).then((response) => console.log(response.body))
+            }).then((response) => {
+                setErr(response.status);
+                console.log(`${response.status} ${response.body}`);
+            })
         } catch (e) {
             console.log(e);
         }
@@ -56,11 +63,14 @@ export default function Students() {
                     />
 
                     <Group justify="flex-end" mt="md">
-                        <Button type="submit">Submit</Button>
+                        {
+                            err === 200 ?
+                                <Button type="submit" color="red">Error</Button> :
+                                <Button type="submit">Submit</Button>
+                        }
                     </Group>
                 </form>
             </div>
-
         </div>
     );
 }

@@ -1,9 +1,21 @@
-import { Menu, Group, Center, Burger, Container, useMantineColorScheme, Text } from '@mantine/core';
+import {
+    Menu,
+    Group,
+    Center,
+    Burger,
+    Container,
+    useMantineColorScheme,
+    Text,
+    useComputedColorScheme
+} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './HeaderMenu.module.css';
 import { useRouter } from 'next/router'
 import { Image } from '@mantine/core';
+import {
+    ColorSchemeToggle
+} from "@/components/ColorSchemeToggle/ColorSchemeToggle";
 
 const links = [
     {
@@ -78,10 +90,22 @@ export default function HeaderMenu() {
                         src={'/cqbsLogo.png'}
                         h={40}
                         className={classes.logo}
+                        alt={"darkLogo"}
+                        darkHidden
+                    />
+                    <Image
+                        onClick={() => router.push('/').catch((error) => console.log(error))}
+                        src={'/cqbsLogoLight.png'}
+                        h={40}
+                        className={classes.logo}
+                        alt={"lightLogo"}
+                        lightHidden
                     />
                     <Group gap={5} visibleFrom="sm">
                         {items}
+                        <ColorSchemeToggle />
                     </Group>
+
                     <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
                 </div>
             </Container>
