@@ -1,11 +1,12 @@
 import '@mantine/core/styles.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { MantineProvider } from '@mantine/core';
+import {Flex, MantineProvider} from '@mantine/core';
 import { theme } from '../theme';
 import HeaderMenu from '@/components/HeaderMenu/HeaderMenu';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
+import Footer from '@/components/Footer/Footer'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -19,7 +20,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="/cqbsFavicon.png" />
       </Head>
         <HeaderMenu />
-      <Component {...pageProps} />
+        <Flex direction={"column"} gap={"xl"}>
+            <Component {...pageProps} />
+        </Flex>
+
         <SpeedInsights />
         <Analytics />
     </MantineProvider>
