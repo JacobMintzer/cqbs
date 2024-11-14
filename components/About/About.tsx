@@ -1,5 +1,7 @@
 import classes from './About.module.css';
 
+//TODO: CSS needs work
+
 export default function About() {
     return (
         <div>

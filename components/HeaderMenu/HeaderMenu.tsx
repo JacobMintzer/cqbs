@@ -30,6 +30,8 @@ const links = [
     { link: '/contact-us', label: 'Contact Us' },
 ];
 
+//TODO: mobile header menu needs to be made.
+
 export default function HeaderMenu() {
     const [opened, { toggle }] = useDisclosure(false);
 

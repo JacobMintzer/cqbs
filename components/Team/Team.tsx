@@ -3,7 +3,6 @@
 import classes from './Team.module.css';
 import {Image} from "@mantine/core";
 
-
 export default function Team() {
 
     return (
