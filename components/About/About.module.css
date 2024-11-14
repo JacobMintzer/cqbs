@@ -15,10 +15,13 @@
 
 .paragraph {
     text-align: left;
-    width: 50%;
+    max-width: 40vw;
+    @media (max-width: $mantine-breakpoint-md) {
+        max-width: 80vw;
+    }
 }
 
 .img {
-    width: 30%;
-    height: auto;
+    max-width: 80%;
+    max-height: 60vh;
 }

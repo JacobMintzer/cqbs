@@ -1,8 +1,13 @@
 .header {
     height: rem(70px);
-    margin-bottom: rem(120px);
+    margin-bottom: 7vh;
     background-color: var(--mantine-color-body);
     border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    position: sticky;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 
 .inner {
@@ -35,4 +40,20 @@
 
 .linkLabel {
     margin-right: rem(5px);
+}
+
+.mobileItem {
+    font-size: var(--mantine-font-size-lg);
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    text-decoration: none;
+    padding: rem(10px) 0;
+    margin-left: rem(20px);
+}
+
+.nestedMobileItem {
+    font-size: var(--mantine-font-size-md);
+    text-decoration: none;
+    padding: rem(8px) 0;
+    border-radius: var(--mantine-radius-sm);
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
 }

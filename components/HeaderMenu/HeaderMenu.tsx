@@ -8,7 +8,7 @@ import {
     Text,
     useComputedColorScheme
 } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import {useDisclosure, useElementSize} from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './HeaderMenu.module.css';
 import { useRouter } from 'next/router'
@@ -16,7 +16,6 @@ import { Image } from '@mantine/core';
 import {
     ColorSchemeToggle
 } from "@/components/ColorSchemeToggle/ColorSchemeToggle";
-
 const links = [
     {
         link: '#1',
@@ -83,6 +82,39 @@ export default function HeaderMenu() {
         );
     });
 
+    const itemsMobile = links.map((link) => {
+        const menuItems = link.links?.map((item) => (
+            <Menu.Item
+                key={item.link}
+                onClick={() => router.push(item.link).catch((error) => console.log(error))}
+                className={classes.mobileItem}
+            >{item.label}</Menu.Item>
+        ));
+
+        if (menuItems) {
+            return (
+                <>
+                    <Menu.Label>{link.label}</Menu.Label>
+                    <Menu.Divider />
+                    {menuItems}
+                    <Menu.Divider />
+                </>
+            );
+        }
+
+        return (
+            <Menu.Item
+                key={link.label}
+                onClick={() => {
+                    router.push(link.link).catch((error) => {console.log(error)});
+                }}
+                className={classes.mobileItem}
+            >
+                {link.label}
+            </Menu.Item>
+        );
+    });
+
     return (
         <header className={classes.header}>
             <Container size="md">
@@ -108,7 +140,14 @@ export default function HeaderMenu() {
                         <ColorSchemeToggle />
                     </Group>
 
-                    <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+                    <Menu width={"90%"} offset={30} onClose={toggle} floatingStrategy={'absolute'}>
+                        <Menu.Target>
+                            <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+                        </Menu.Target>
+                        <Menu.Dropdown>
+                            {itemsMobile}
+                        </Menu.Dropdown>
+                    </Menu>
                 </div>
             </Container>
         </header>

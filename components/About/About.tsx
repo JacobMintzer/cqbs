@@ -1,4 +1,6 @@
+'using client';
 import classes from './About.module.css';
+import {Flex, Group} from "@mantine/core";
 
 //TODO: CSS needs work
 
@@ -6,7 +8,10 @@ export default function About() {
     return (
         <div>
             <h1 className={classes.heading}>Our Mission</h1>
-            <div className={classes.divTextImg}>
+            <Flex direction={{ base: 'column', md: 'row' }}
+                  gap={{ base: 'sm', md: 'xl' }}
+                  align={{ base: 'center', md: 'flex-start' }}
+                  justify={"center"} wrap={"wrap"}>
                 <p className={classes.paragraph}>
                     Lorem ipsum odor amet, consectetuer adipiscing elit. Tempus
                     a consectetur est curae ultrices tellus. Pellentesque
@@ -31,7 +36,7 @@ export default function About() {
                     accumsan nibh sollicitudin aenean amet enim.
                 </p>
                 <img className={classes.img} src="https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg" alt="Monkey 1"/>
-            </div>
+            </Flex>
         </div>
     );
 }
