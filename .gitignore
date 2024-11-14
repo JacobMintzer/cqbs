@@ -133,3 +133,4 @@ dist
 
 # config
 config.json
+*.env

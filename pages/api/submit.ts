@@ -2,8 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 // @ts-ignore
 import Pageclip from "pageclip";
-import api from "../../config.json";
-const pageclip = new Pageclip(api.pageClipAPI);
+const pageclip = new Pageclip(process.env.PAGECLIP_API_KEY);
 
 export default async function handler(
     req: NextApiRequest,
