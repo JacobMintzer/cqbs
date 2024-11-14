@@ -10,6 +10,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: center;
+    margin: 0 10vw;
 }
 
 .member {
@@ -34,4 +36,8 @@
     width: 100%;
     height: auto;
 
+}
+
+.h {
+    margin-bottom: -10pt;
 }

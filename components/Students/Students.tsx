@@ -1,11 +1,16 @@
 import classes from "@/components/Students/Students.module.css";
 import { useForm } from '@mantine/form';
-import { Button, Checkbox, Group, TextInput } from '@mantine/core';
+import {Button, Checkbox, Fieldset, Group, TextInput, Text} from '@mantine/core';
 import { useState } from "react";
 
 export default function Students() {
 
-    const [err, setErr] = useState(0);
+    const [err, setErr] = useState({
+        status: -999,
+        message: ""
+    });
+
+    const [disabled, setDisabled] = useState(false);
 
     const form = useForm({
         mode: 'uncontrolled',
@@ -15,14 +20,14 @@ export default function Students() {
         },
 
         validate: {
-            email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid' +
-                ' email'),
+            email: (value) => (/^\S+@columbia.edu$/.test(value) ? null :
+            "Please enter your @columbia.edu email."),
         },
     });
 
     const handleSubmit = async (values : Object) => {
-        console.log(values)
         try {
+            setDisabled(true);
             await fetch('/api/submit', {
                 method: "POST",
                 headers: {
@@ -30,12 +35,48 @@ export default function Students() {
                 },
                 body: JSON.stringify(values)
             }).then((response) => {
-                setErr(response.status);
+                if (response.status === 200){
+                    setErr({
+                        status: response.status,
+                        message: "Your response has been successfully saved!"
+                    });
+                    setDisabled(true);
+                }
+                else {
+                    setErr({
+                        status: response.status,
+                        message: JSON.stringify(response.body)
+                    });
+                }
                 console.log(`${response.status} ${response.body}`);
             })
         } catch (e) {
             console.log(e);
+            setErr({
+                status: 500,
+                message: "Internal Error: please try again later"
+            });
+            setDisabled(false);
         }
+    }
+
+    const handleButton = ()=> {
+        if (err.status === -999)
+            return(<Button type="submit">Submit</Button>);
+        else if (err.status === 200)
+            return (
+                <>
+                    <Text c={"blue"}>Your response has been submitted!</Text>
+                    <Button type="submit">Submitted!</Button>
+                </>
+            );
+        else
+            return (
+                <>
+                    <Text c={"red"}>Hmm... It is not working as intended. Try Again?</Text>
+                    <Button color={"red"} type="submit">Send Again</Button>
+                </>
+            );
     }
 
     return (
@@ -47,28 +88,26 @@ export default function Students() {
                     onSubmit={form.onSubmit((values) => {
                         handleSubmit(values);
                     })}>
-                    <TextInput
-                        withAsterisk
-                        label="Email"
-                        placeholder="your@ucsd.edu"
-                        key={form.key('email')}
-                        {...form.getInputProps('email')}
-                    />
+                    <Fieldset disabled={disabled} variant={"unstyled"}>
+                        <TextInput
+                            withAsterisk
+                            label="Email"
+                            placeholder="your@columbia.edu"
+                            key={form.key('email')}
+                            {...form.getInputProps('email')}
+                        />
 
-                    <Checkbox
-                        mt="md"
-                        label="I agree to sell my privacy"
-                        key={form.key('termsOfService')}
-                        {...form.getInputProps('termsOfService', {type: 'checkbox'})}
-                    />
+                        <Checkbox
+                            mt="md"
+                            label="I agree to sell my privacy"
+                            key={form.key('termsOfService')}
+                            {...form.getInputProps('termsOfService', {type: 'checkbox'})}
+                        />
 
-                    <Group justify="flex-end" mt="md">
-                        {
-                            err === 200 ?
-                                <Button type="submit" color="red">Error</Button> :
-                                <Button type="submit">Submit</Button>
-                        }
-                    </Group>
+                        <Group justify="flex-end" mt="md">
+                            {handleButton()}
+                        </Group>
+                    </Fieldset>
                 </form>
             </div>
         </div>

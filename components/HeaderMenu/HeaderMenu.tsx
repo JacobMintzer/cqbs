@@ -26,7 +26,7 @@ const links = [
         ],
     },
     { link: '/students', label: 'Prospective Students' },
-    { link: '/contact-us', label: 'Contact Us' },
+    { link: '/contact', label: 'Contact Us' },
 ];
 
 //TODO: mobile header menu needs to be made.

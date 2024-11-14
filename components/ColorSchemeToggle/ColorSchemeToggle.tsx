@@ -3,7 +3,6 @@ import { MdLightMode, MdDarkMode } from "react-icons/md";
 import classes from './ColorSchemeToggle.module.css';
 import cx from 'clsx';
 
-
 export function ColorSchemeToggle() {
     // @ts-ignore
     const { setColorScheme } = useMantineColorScheme();

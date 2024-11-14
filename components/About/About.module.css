@@ -15,6 +15,7 @@
 
 .paragraph {
     text-align: left;
+    font-size: x-large;
     max-width: 40vw;
     @media (max-width: $mantine-breakpoint-md) {
         max-width: 80vw;

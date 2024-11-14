@@ -1,6 +1,6 @@
 'using client';
 import classes from './About.module.css';
-import {Flex, Group} from "@mantine/core";
+import {Flex, Group, Image, Text} from "@mantine/core";
 
 //TODO: CSS needs work
 
@@ -8,34 +8,37 @@ export default function About() {
     return (
         <div>
             <h1 className={classes.heading}>Our Mission</h1>
-            <Flex direction={{ base: 'column', md: 'row' }}
-                  gap={{ base: 'sm', md: 'xl' }}
-                  align={{ base: 'center', md: 'flex-start' }}
+            <Flex direction={{
+                base: 'column',
+                md: 'row'
+            }}
+                  gap={{
+                      base: 'sm',
+                      md: '4vw'
+                  }}
+                  align={{
+                      base: 'center',
+                      md: 'flex-start'
+                  }}
                   justify={"center"} wrap={"wrap"}>
-                <p className={classes.paragraph}>
-                    Lorem ipsum odor amet, consectetuer adipiscing elit. Tempus
-                    a consectetur est curae ultrices tellus. Pellentesque
-                    sagittis vivamus vivamus nisi cras mus. Facilisis ultrices
-                    montes dapibus interdum ultricies sociosqu auctor. Integer
-                    nostra diam ullamcorper rhoncus nam dui cubilia. Cubilia
-                    vehicula varius proin nisi feugiat nam donec. Vehicula eu
-                    nisl sollicitudin placerat urna leo sit. Sodales efficitur
-                    vehicula erat inceptos aptent quisque. Feugiat ipsum
-                    convallis fermentum inceptos pulvinar elementum habitant ad.
-                    Ridiculus cras semper maecenas sit consequat ullamcorper
-                    maximus.
-                    <br/>
-                    Aliquam pulvinar orci accumsan sollicitudin posuere. Euismod
-                    posuere purus pellentesque natoque, fusce natoque risus
-                    phasellus. Torquent volutpat ut bibendum ornare nisl;
-                    interdum nisl lacinia. Natoque finibus habitasse dictumst
-                    tristique convallis aliquet hac pharetra. Sociosqu nostra
-                    potenti iaculis egestas neque congue nisi. Urna tempor ipsum
-                    hendrerit venenatis arcu vulputate. Faucibus est porta
-                    laoreet ipsum porttitor at. Tempor posuere curabitur
-                    accumsan nibh sollicitudin aenean amet enim.
-                </p>
-                <img className={classes.img} src="https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg" alt="Monkey 1"/>
+                <Image className={classes.img}
+                       radius="xl"
+                        src="https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg"
+                        alt="Monkey 1"/>
+                <Text className={classes.paragraph}>
+                    The Columbia Queer Business Society (CQBS) is the first
+                    pre-professional LGBTQ community at Columbia University
+                    established in 2011, bringing together students interested
+                    in fields such as consulting, finance, technology, and
+                    public-sector business. We strive to de-stigmatize being
+                    “out” in the industry by fostering a supportive community
+                    and providing networking opportunities.
+                    We thrive on collaboration and frequently partner with
+                    companies and organizations, primarily within the banking,
+                    consulting, and technology sectors. Some of our past
+                    partners include Goldman Sachs, McKinsey & Company, Google,
+                    and Bain & Company.
+                </Text>
             </Flex>
         </div>
     );
