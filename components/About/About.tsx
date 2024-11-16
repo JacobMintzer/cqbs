@@ -19,7 +19,9 @@ export default function About() {
                       base: 'center',
                       md: 'flex-start'
                   }}
-                  justify={"center"} wrap={"wrap"}>
+                  justify={"center"}
+                  wrap={"wrap"}
+            >
 
                 <Flex
                     direction={"column"}
@@ -32,7 +34,7 @@ export default function About() {
                           className={classes.heading}
                           fw={700}
                     >Our Mission</Text>
-                    <Text className={classes.paragraph}>
+                    <Text className={classes.paragraph} mb={"xl"}>
                         The Columbia Queer Business Society (CQBS) is the first
                         pre-professional LGBTQ community at Columbia University
                         established in 2011, bringing together students interested
@@ -49,8 +51,9 @@ export default function About() {
                 </Flex>
                 <Image className={classes.img}
                        radius="xl"
-                       src="https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg"
-                       alt="Monkey 1"/>
+                       src="https://img-cf.kurly.com/hdims/resize/%5E%3E720x%3E936/cropcenter/720x936/quality/85/src/shop/data/goods/1590468591591l0.jpg"
+                       alt="Monkey 1"
+                />
             </Flex>
         </div>
     );

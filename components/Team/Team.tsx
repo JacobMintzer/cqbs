@@ -7,8 +7,8 @@ const team = [
     {
         name: "Enzo Kim",
         role: "President",
-        about: "Economics and Creative Writings",
-        pic: "/avatar2.png"
+        about: "Economics and Creative Writing",
+        pic: "/oppar.png"
     },
     {
         name: "Bobby Veiham",
@@ -31,7 +31,7 @@ const team = [
     {
         name: "Artemis Edison",
         role: "Treasurer",
-        about: "History",
+        about: "Financial History",
         pic: "/avatar2.png"
     }
 ];

@@ -11,9 +11,9 @@ export function Welcome() {
         </Text>
       </Title>
       <Text color="dimmed" ta="center" size="lg" maw={"80%"} mx="auto" mt="xl">
-        This webpage is in development due to the club not providing me with details :(
+        If you are a member reading this, please tell your president to send deets :(
           <br />
-          Blame the president.
+          anyways always blame the president
       </Text>
     </div>
   );

@@ -12,9 +12,9 @@ export default async function handler(
         try {
             await pageclip.send('newStudent', req.body).then((response : any) => {
                 console.log(
-                    response.status, // 200
-                    response.form, // 'mailinglist'
-                    response.data    // [Item({email: 'john@omgunicorns.com'})]
+                    response.status,
+                    response.form,
+                    response.data
                 )
                 res.status(response.status).json(response.data);
             })
