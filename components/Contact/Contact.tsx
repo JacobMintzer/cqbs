@@ -29,15 +29,17 @@ export default function Contact() {
                 contact:
                 <br/>
                 <br/>
-                <Anchor onClick={() => openInNewTab(
-                    `mailto:${contactEmail}`
-                )}>
+                <Anchor
+                    onClick={() => openInNewTab(
+                    `mailto:${contactEmail}`)}
+                    underline="always"
+                >
                     Enzo Kim
                 </Anchor>
                 <CopyButton value={contactEmail}>
                     {({ copied, copy }) => (
-                        <Button color={copied ? 'teal' : 'blue'} onClick={copy} size={"xs"} ml={"xs"}>
-                            {copied ? 'Copied email' : 'Copy email'}
+                        <Button color={copied ? 'teal' : 'pink'} onClick={copy} size={"xs"} ml={"xs"}>
+                            {copied ? 'Copied email!' : 'Copy email'}
                         </Button>
                     )}
                 </CopyButton>

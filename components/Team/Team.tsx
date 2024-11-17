@@ -14,6 +14,7 @@ export default function Team(props : any) {
                         h={200}
                         w={200}
                         alt={`Picture of ${member.name}`}
+                        fallbackSrc={"/avatar2.png"}
                     />
                 </div>
                 <h2 className={classes.h}>{member.name}</h2>
@@ -23,7 +24,7 @@ export default function Team(props : any) {
         )});
 
     return (
-        <div>
+        <Flex direction={"column"}>
             <Flex className={classes.topDiv}>
                 <Title order={1} className={classes.head}>
                     {props.title}
@@ -35,6 +36,6 @@ export default function Team(props : any) {
             <div className={classes.team}>
                 {mapTeams}
             </div>
-        </div>
+        </Flex>
     );
 }

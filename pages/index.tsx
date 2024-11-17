@@ -1,11 +1,7 @@
-import { Welcome } from '../components/Welcome/Welcome';
-
-//TODO: MAKE CONTACT US PAGE.
+import Welcome from '@/components/Welcome/Welcome';
 
 export default function HomePage() {
   return (
-    <>
       <Welcome />
-    </>
   );
 }

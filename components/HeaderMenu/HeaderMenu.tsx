@@ -19,7 +19,7 @@ import {
 const links = [
     {
         link: '#1',
-        label: 'Mission',
+        label: 'About',
         links: [
             { link: '/about', label: 'Mission' },
             { link: '/about/team', label: 'Team' },

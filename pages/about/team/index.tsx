@@ -3,6 +3,9 @@
  */
 
 import Team from '../../../components/Team/Team';
+import React from "react";
+import Footer from "@/components/Footer/Footer";
+import {Flex} from "@mantine/core";
 
 // This is how you should format each member
 interface MemberType {
@@ -51,10 +54,13 @@ const team : Array<MemberType> = [
 export default function TeamPage() {
 
     return (
-        <Team
-            title={title}
-            subtitle={subtitle}
-            team={team}
-        />
+        <Flex direction={"column"} gap={"xs"}>
+            <Team
+                title={title}
+                subtitle={subtitle}
+                team={team}
+            />
+            <Footer />
+        </Flex>
     );
 }
