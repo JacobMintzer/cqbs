@@ -1,20 +1,20 @@
 'use client';
 
 import classes from './Team.module.css';
-import {Image} from "@mantine/core";
+import {Flex, Image, Title} from "@mantine/core";
 
 const team = [
     {
         name: "Enzo Kim",
         role: "President",
         about: "Economics and Creative Writing",
-        pic: "/oppar.png"
+        pic: "/monkey1.png"
     },
     {
         name: "Bobby Veiham",
         role: "Vice President",
         about: "Computer Science",
-        pic: "/avatar2.png"
+        pic: "/bobby.jpg"
     },
     {
         name: "Sai Sai",
@@ -40,8 +40,11 @@ export default function Team() {
 
     return (
         <div>
-            <h1 className={classes.head}>Members of the Board</h1>
-            <h3 className={classes.sub}>Meet your current board members!</h3>
+            <Flex direction={"column"} justify={"center"} align={"center"} className={classes.topDiv}>
+                <Title order={1} ta={"center"} mb={"md"} className={classes.head}>Members of the Board</Title>
+                <Title order={3} ta={"center"} mb={"md"} className={classes.sub}>Meet your current board members!</Title>
+            </Flex>
+
                         <div className={classes.team}>
                             {team.map((member) => {
                                 return (

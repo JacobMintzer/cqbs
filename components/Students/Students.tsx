@@ -1,6 +1,15 @@
 import classes from "@/components/Students/Students.module.css";
 import { useForm } from '@mantine/form';
-import {Button, Checkbox, Fieldset, Group, TextInput, Text} from '@mantine/core';
+import {
+    Button,
+    Checkbox,
+    Fieldset,
+    Group,
+    TextInput,
+    Text,
+    Title,
+    Flex
+} from '@mantine/core';
 import { useState } from "react";
 
 export default function Students() {
@@ -80,36 +89,31 @@ export default function Students() {
     }
 
     return (
-        <div>
-            <h1 className={classes.head}>Prospective Students</h1>
-            <p className={classes.sub}>Fill out the interest form!</p>
-            <div className={classes.formDiv}>
-                <form
-                    onSubmit={form.onSubmit((values) => {
-                        handleSubmit(values);
-                    })}>
-                    <Fieldset disabled={disabled} variant={"unstyled"}>
-                        <TextInput
-                            withAsterisk
-                            label="Email"
-                            placeholder="your@columbia.edu"
-                            key={form.key('email')}
-                            {...form.getInputProps('email')}
-                        />
-
-                        <Checkbox
-                            mt="md"
-                            label="I agree to sell my privacy"
-                            key={form.key('termsOfService')}
-                            {...form.getInputProps('termsOfService', {type: 'checkbox'})}
-                        />
-
-                        <Group justify="flex-end" mt="md">
-                            {handleButton()}
-                        </Group>
-                    </Fieldset>
-                </form>
-            </div>
-        </div>
+        <Flex direction={"column"} justify={"center"} align={"center"} className={classes.topDiv}>
+            <Title order={1} ta={"center"}
+                   mb={"md"} maw={"80%"}
+            >Welcome Prospective Students</Title>
+            <Text className={classes.sub} ta={"left"} mb={"md"} maw={"80%"}>
+                Welcome! We're thrilled to have you here. Please think of us as a helpful resource – we are happy to delve into what life is like at CQBS or simply chat.
+                If you'd like to connect with a current member of Cluster Q, kindly fill out the form below. We'll reach out to you as soon as possible!
+            </Text>
+            <form
+                onSubmit={form.onSubmit((values) => {
+                    handleSubmit(values);
+                })} className={classes.form}>
+                <Fieldset disabled={disabled} variant={"unstyled"}>
+                    <TextInput
+                        withAsterisk
+                        label="Email"
+                        placeholder="your@columbia.edu"
+                        key={form.key('email')}
+                        {...form.getInputProps('email')}
+                    />
+                    <Group justify="flex-end" mt="md">
+                        { handleButton() }
+                    </Group>
+                </Fieldset>
+            </form>
+        </Flex>
     );
 }

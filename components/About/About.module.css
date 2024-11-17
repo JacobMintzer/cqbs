@@ -1,6 +1,5 @@
 .heading {
     font-size: xx-large;
-    margin-bottom: 1em;
 }
 
 .divTextImg {
@@ -16,8 +15,8 @@
 
 .paragraph {
     text-align: justify-all;
-    font-size: x-large;
     max-width: 40vw;
+    font-size: 130%;
     @media (max-width: $mantine-breakpoint-md) {
         max-width: 80vw;
         font-size: larger;
@@ -26,8 +25,10 @@
 
 .img {
     max-width: 80%;
-    max-height: 75vh;
+    height: 70vh;
+    width: 30vw;
     @media (max-width: $mantine-breakpoint-md) {
-        margin: 1.5em;
+        margin: 1em;
+        width: 80vw;
     }
 }

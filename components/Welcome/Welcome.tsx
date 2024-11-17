@@ -6,14 +6,14 @@ export function Welcome() {
     <div className={classes.welcomeDiv}>
       <Title className={classes.title} ta="center" mt={100}>
         Welcome to{' '}
-        <Text inherit variant="gradient" component="span" gradient={{ from: 'pink', to: 'yellow' }}>
+        <Text inherit variant="gradient" component="span" gradient={{ from: 'red', to: 'purple' }}>
           CQBS
         </Text>
       </Title>
       <Text color="dimmed" ta="center" size="lg" maw={"80%"} mx="auto" mt="xl">
-        If you are a member reading this, please tell your president to send deets :(
-          <br />
-          anyways always blame the president
+          The premier business group for LGBT undergraduates at Columbia University.
+          <br/>
+          We strive to de-stigmatize being “out” in the industry.
       </Text>
     </div>
   );

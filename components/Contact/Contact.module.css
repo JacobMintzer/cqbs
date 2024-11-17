@@ -1,18 +1,6 @@
-.head {
-    text-align: center;
-}
-
-.sub {
-    text-align: center;
-}
-
 .topDiv {
     margin: 0 rem(20vw);
     @media (max-width: $mantine-breakpoint-md) {
         margin: 0 rem(10vw);
     }
-}
-
-.form {
-    width: 80%;
 }
