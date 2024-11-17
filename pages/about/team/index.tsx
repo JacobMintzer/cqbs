@@ -20,25 +20,25 @@ const team : Array<MemberType> = [
         name: "Enzo Kim",
         role: "President",
         about: "Economics and Creative Writing",
-        pic: "/monkey1.png"
+        pic: "/Enzo.png"
     },
     {
         name: "Bobby Veiham",
         role: "Vice President",
         about: "Computer Science",
-        pic: "/bobby.jpg"
+        pic: "/Bobby.jpg"
     },
     {
         name: "Sai Sai",
         role: "Secretary",
         about: "Psychology",
-        pic: "/avatar2.png"
+        pic: "/Sai.jpg"
     },
     {
         name: "A.J. Lebenns",
         role: "Advisor",
         about: "Economics",
-        pic: "/avatar2.png"
+        pic: "/AJ.jpg"
     },
     {
         name: "Artemis Edison",
