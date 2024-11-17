@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <meta property="description"
                   content="Website of the Columbia Queer Business Society"/>
             <meta property="og:image"
-                  content="https://github.com/KingMedieval/cqbs/blob/master/public/cqbsFavicon.png?raw=true"/>
+                  content="https://github.com/KingMedieval/cqbs/blob/master/public/cqbsLogoLight.png?raw=true"/>
             <meta property="og:site_name"
                   content="Columbia Queer Business Society"/>
             <meta property="og:description"
