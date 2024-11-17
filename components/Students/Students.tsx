@@ -2,7 +2,6 @@ import classes from "@/components/Students/Students.module.css";
 import { useForm } from '@mantine/form';
 import {
     Button,
-    Checkbox,
     Fieldset,
     Group,
     TextInput,
@@ -12,7 +11,7 @@ import {
 } from '@mantine/core';
 import { useState } from "react";
 
-export default function Students() {
+export default function Students(props : any) {
 
     const [err, setErr] = useState({
         status: -999,
@@ -92,10 +91,11 @@ export default function Students() {
         <Flex direction={"column"} justify={"center"} align={"center"} className={classes.topDiv}>
             <Title order={1} ta={"center"}
                    mb={"md"} maw={"80%"}
-            >Welcome Prospective Students</Title>
+            >
+                { props.title }
+            </Title>
             <Text className={classes.sub} ta={"left"} mb={"md"} maw={"80%"}>
-                Welcome! We're thrilled to have you here. Please think of us as a helpful resource – we are happy to delve into what life is like at CQBS or simply chat.
-                If you'd like to connect with a current member of CQBS, kindly fill out the form below. We'll reach out to you as soon as possible!
+                { props.subtitle }
             </Text>
             <form
                 onSubmit={form.onSubmit((values) => {

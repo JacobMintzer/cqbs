@@ -19,7 +19,7 @@ import {
 const links = [
     {
         link: '#1',
-        label: 'About',
+        label: 'Mission',
         links: [
             { link: '/about', label: 'Mission' },
             { link: '/about/team', label: 'Team' },
@@ -50,11 +50,11 @@ export default function HeaderMenu() {
                 <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
                     <Menu.Target>
                         <a
-                          href={link.link}
-                          className={classes.link}
-                          onClick={(event) => {
-                              event.preventDefault();
-                          }}
+                            href={link.link}
+                            className={classes.link}
+                            onClick={(event) => {
+                                event.preventDefault();
+                            }}
                         >
                             <Center>
                                 <span className={classes.linkLabel}>{link.label}</span>
@@ -88,7 +88,9 @@ export default function HeaderMenu() {
                 key={item.link}
                 onClick={() => router.push(item.link).catch((error) => console.log(error))}
                 className={classes.mobileItem}
-            >{item.label}</Menu.Item>
+            >
+                {item.label}
+            </Menu.Item>
         ));
 
         if (menuItems) {
@@ -118,7 +120,7 @@ export default function HeaderMenu() {
     return (
         <header className={classes.header}>
             <Container size="md">
-                <div className={classes.inner}>
+                <Container className={classes.inner}>
                     <Image
                         onClick={() => router.push('/').catch((error) => console.log(error))}
                         src={'/cqbsLogo.png'}
@@ -144,11 +146,11 @@ export default function HeaderMenu() {
                         <Menu.Target>
                             <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
                         </Menu.Target>
-                        <Menu.Dropdown>
+                        <Menu.Dropdown hiddenFrom={"sm"}>
                             {itemsMobile}
                         </Menu.Dropdown>
                     </Menu>
-                </div>
+                </Container>
             </Container>
         </header>
     );

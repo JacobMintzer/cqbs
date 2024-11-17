@@ -8,6 +8,7 @@
     top: 0;
     left: 0;
     z-index: 100;
+    padding: rem(7px);
 }
 
 .inner {
@@ -15,7 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: rem(7px);
+    position: sticky;
 }
 
 .logo {
@@ -46,8 +47,7 @@
     font-size: var(--mantine-font-size-lg);
     color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
     text-decoration: none;
-    padding: rem(10px) 0;
-    margin-left: rem(20px);
+    padding: rem(10px) rem(20px);
 }
 
 .nestedMobileItem {
