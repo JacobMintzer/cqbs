@@ -47,7 +47,7 @@ const team : Array<MemberType> = [
         name: "Artemis Edison",
         role: "Treasurer",
         about: "Financial History",
-        pic: "/avatar2.png"
+        pic: "/Artemis.jpg"
     }
 ];
 

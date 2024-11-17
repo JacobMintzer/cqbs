@@ -1,6 +1,7 @@
 'using client';
 import classes from './Mission.module.css';
 import {Flex, Image, Text, Title} from "@mantine/core";
+import NextImage from 'next/image'
 
 //TODO: CSS needs work
 

@@ -12704,6 +12704,7 @@ __metadata:
     react-dom: "npm:18.3.1"
     react-icons: "npm:^5.3.0"
     react-page-scroller: "npm:^3.0.1"
+    sharp: "npm:^0.33.5"
     storybook: "npm:^8.1.10"
     storybook-dark-mode: "npm:^4.0.2"
     stylelint: "npm:^16.6.1"
