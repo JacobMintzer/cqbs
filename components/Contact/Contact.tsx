@@ -5,7 +5,7 @@ import {
     Flex, Anchor, CopyButton
 } from '@mantine/core';
 import classes from "./Contact.module.css";
-import gnirts from "gnirts";
+const gnirts =  require("gnirts");
 
 const contactEmail : string = gnirts.mangle(process.env.NEXT_PUBLIC_CONTACT_EMAIL);
 
