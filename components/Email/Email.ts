@@ -1,5 +1,7 @@
 const gnirts =  require("gnirts");
 
 export function mangledEmail() {
-    return gnirts.mangle(process.env.NEXT_PUBLIC_CONTACT_EMAIL);
+    let x = btoa(String(process.env.NEXT_PUBLIC_CONTACT_EMAIL));
+    let a : string = gnirts.mangle(atob(x));
+    return a;
 }
