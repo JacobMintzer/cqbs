@@ -1,7 +1,5 @@
-'use client';
 import classes from './Team.module.css';
 import {Flex, Image, Title} from "@mantine/core";
-import NextImage from 'next/image'
 
 export default function Team(props : any) {
 

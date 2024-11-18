@@ -16,6 +16,7 @@ import { Image } from '@mantine/core';
 import {
     ColorSchemeToggle
 } from "@/components/ColorSchemeToggle/ColorSchemeToggle";
+import Link from "next/link";
 const links = [
     {
         link: '#1',
@@ -68,17 +69,18 @@ export default function HeaderMenu() {
         }
 
         return (
-            <a
+            <Link
               key={link.label}
               href={link.link}
               className={classes.link}
               onClick={(event) => {
-                  event.preventDefault();
+                    event.preventDefault();
                     router.push(link.link).catch((error) => {console.log(error)});
               }}
+              prefetch={true}
             >
                 {link.label}
-            </a>
+            </Link>
         );
     });
 
