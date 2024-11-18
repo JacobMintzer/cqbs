@@ -10449,6 +10449,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gnirts@npm:^1.1.8":
+  version: 1.1.8
+  resolution: "gnirts@npm:1.1.8"
+  checksum: 10c0/c6a54a4e1ac147807fbdb550bb886eeadb29ca6687e96c65390caf49721b0ea685f23eb1633bbc70c91bf0439374a0011b531882bc20a171ea077b04a44351a1
+  languageName: node
+  linkType: hard
+
 "gopd@npm:^1.0.1":
   version: 1.0.1
   resolution: "gopd@npm:1.0.1"
@@ -12692,6 +12699,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.34.3"
     eslint-plugin-react-hooks: "npm:^4.6.2"
     eslint-plugin-testing-library: "npm:^6.2.2"
+    gnirts: "npm:^1.1.8"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     next: "npm:15.0.1"

@@ -1,9 +1,5 @@
 import {
     Button,
-    Checkbox,
-    Fieldset,
-    Group,
-    TextInput,
     Text,
     Title,
     Flex, Anchor, CopyButton
@@ -17,6 +13,12 @@ export default function Contact() {
         if (newWindow) newWindow.opener = null
     }
 
+    const contactEmail : string = String(
+        /* @mangle */
+        process.env.NEXT_PUBLIC_CONTACT_EMAIL
+        /* @mangle */
+    );
+
     return(
         <Flex direction={"column"} justify={"center"} align={"center"} className={classes.topDiv}>
             <Title ta={"center"} mb={"md"} maw={"80%"}>
@@ -29,12 +31,12 @@ export default function Contact() {
                 <br/>
                 <Anchor
                     onClick={() => openInNewTab(
-                    `mailto:${String(process.env.NEXT_PUBLIC_CONTACT_EMAIL)}`)}
+                    `mailto:${contactEmail}`)}
                     underline="always"
                 >
                     Enzo Kim
                 </Anchor>
-                <CopyButton value={String(process.env.NEXT_PUBLIC_CONTACT_EMAIL)}>
+                <CopyButton value={contactEmail}>
                     {({ copied, copy }) => (
                         <Button color={copied ? 'teal' : 'pink'} onClick={copy} size={"xs"} ml={"xs"}>
                             {copied ? 'Copied email!' : 'Copy email'}
