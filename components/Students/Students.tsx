@@ -7,9 +7,11 @@ import {
     TextInput,
     Text,
     Title,
-    Flex
+    Flex,
+    LoadingOverlay, Box
 } from '@mantine/core';
 import { useState } from "react";
+import { useDisclosure } from '@mantine/hooks';
 
 export default function Students(props : any) {
 
@@ -18,13 +20,14 @@ export default function Students(props : any) {
         message: ""
     });
 
+    const [loadingVisibility, handleLoading] = useDisclosure(false);
+
     const [disabled, setDisabled] = useState(false);
 
     const form = useForm({
         mode: 'uncontrolled',
         initialValues: {
-            email: '',
-            termsOfService: false,
+            email: ''
         },
 
         validate: {
@@ -36,6 +39,7 @@ export default function Students(props : any) {
     const handleSubmit = async (values : Object) => {
         try {
             setDisabled(true);
+            handleLoading.open();
             await fetch('/api/submit', {
                 method: "POST",
                 headers: {
@@ -48,23 +52,23 @@ export default function Students(props : any) {
                         status: response.status,
                         message: "Your response has been successfully saved!"
                     });
-                    setDisabled(true);
                 }
                 else {
                     setErr({
                         status: response.status,
                         message: JSON.stringify(response.body)
                     });
+                    setDisabled(false);
                 }
-                console.log(`${response.status} ${response.body}`);
+                handleLoading.close();
             })
         } catch (e) {
-            console.log(e);
             setErr({
                 status: 500,
                 message: "Internal Error: please try again later"
             });
             setDisabled(false);
+            handleLoading.close();
         }
     }
 
@@ -97,23 +101,30 @@ export default function Students(props : any) {
             <Text className={classes.sub} ta={"left"} mb={"md"} maw={"80%"}>
                 { props.subtitle }
             </Text>
-            <form
-                onSubmit={form.onSubmit((values) => {
-                    handleSubmit(values);
-                })} className={classes.form}>
-                <Fieldset disabled={disabled} variant={"unstyled"}>
-                    <TextInput
-                        withAsterisk
-                        label="Email"
-                        placeholder="your@columbia.edu"
-                        key={form.key('email')}
-                        {...form.getInputProps('email')}
-                    />
-                    <Group justify="flex-end" mt="md">
-                        { handleButton() }
-                    </Group>
-                </Fieldset>
-            </form>
+            <Flex pos={"relative"} w={"80%"} justify={"center"}>
+                <LoadingOverlay visible={loadingVisibility} zIndex={1000}
+                                overlayProps={{
+                                    radius: "sm",
+                                    blur: 2
+                                }}/>
+                <form
+                    onSubmit={form.onSubmit((values) => {
+                        handleSubmit(values);
+                    })} className={classes.form}>
+                    <Fieldset disabled={disabled} variant={"unstyled"}>
+                        <TextInput
+                            withAsterisk
+                            label="Email"
+                            placeholder="your@columbia.edu"
+                            key={form.key('email')}
+                            {...form.getInputProps('email')}
+                        />
+                        <Group justify="flex-end" mt="md">
+                            {handleButton()}
+                        </Group>
+                    </Fieldset>
+                </form>
+            </Flex>
         </Flex>
     );
 }
