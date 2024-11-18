@@ -8,6 +8,6 @@ export default async function handler(
     res: NextApiResponse
 ) {
     if (req.method === "GET") {
-        res.status(200).json({email: email});
+        res.status(200).json({e: email});
     }
 }

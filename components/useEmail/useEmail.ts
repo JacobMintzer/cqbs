@@ -9,7 +9,7 @@ export function useEmail() {
     const { data, error } = useSWR('/api/email', fetcher);
 
     return {
-        email: data,
+        e: data,
         isLoading: !error && !data,
         isError: error
     };

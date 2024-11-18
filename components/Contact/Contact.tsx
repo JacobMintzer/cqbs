@@ -9,7 +9,7 @@ import {useEmail} from "@/components/useEmail/useEmail";
 
 export default function Contact() {
 
-    const { email, isLoading, isError } = useEmail();
+    const { e, isLoading, isError } = useEmail();
 
     const openInNewTab = (url: string): void => {
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
@@ -32,12 +32,12 @@ export default function Contact() {
                 <br/>
                 <Anchor
                     onClick={() => openInNewTab(
-                    `mailto:${atob(email.email)}`)}
+                    `mailto:${atob(e.e)}`)}
                     underline="always"
                 >
                     Enzo Kim
                 </Anchor>
-                <CopyButton value={atob(email.email)}>
+                <CopyButton value={atob(e.e)}>
                     {({ copied, copy }) => (
                         <Button color={copied ? 'teal' : 'pink'} onClick={copy} size={"xs"} ml={"xs"}>
                             {copied ? 'Copied email!' : 'Copy email'}
