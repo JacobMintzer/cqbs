@@ -5,6 +5,9 @@ import {
     Flex, Anchor, CopyButton
 } from '@mantine/core';
 import classes from "./Contact.module.css";
+import gnirts from "gnirts";
+
+const contactEmail : string = gnirts.mangle(process.env.NEXT_PUBLIC_CONTACT_EMAIL);
 
 export default function Contact() {
 
@@ -12,12 +15,6 @@ export default function Contact() {
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
         if (newWindow) newWindow.opener = null
     }
-
-    const contactEmail : string = String(
-        /* @mangle */
-        process.env.NEXT_PUBLIC_CONTACT_EMAIL
-        /* @mangle */
-    );
 
     return(
         <Flex direction={"column"} justify={"center"} align={"center"} className={classes.topDiv}>
