@@ -5,15 +5,20 @@ import {
     Flex, Anchor, CopyButton
 } from '@mantine/core';
 import classes from "./Contact.module.css";
-import {mangledEmail} from "@/components/Email/Email";
-const contactEmail : string = mangledEmail();
+import {useEmail} from "@/components/useEmail/useEmail";
 
 export default function Contact() {
+
+    const { email, isLoading, isError } = useEmail();
 
     const openInNewTab = (url: string): void => {
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
         if (newWindow) newWindow.opener = null
     }
+
+    if (isLoading || isError) return <div></div>;
+
+
 
     return(
         <Flex direction={"column"} justify={"center"} align={"center"} className={classes.topDiv}>
@@ -27,12 +32,12 @@ export default function Contact() {
                 <br/>
                 <Anchor
                     onClick={() => openInNewTab(
-                    `mailto:${contactEmail}`)}
+                    `mailto:${atob(email.email)}`)}
                     underline="always"
                 >
                     Enzo Kim
                 </Anchor>
-                <CopyButton value={contactEmail}>
+                <CopyButton value={atob(email.email)}>
                     {({ copied, copy }) => (
                         <Button color={copied ? 'teal' : 'pink'} onClick={copy} size={"xs"} ml={"xs"}>
                             {copied ? 'Copied email!' : 'Copy email'}
