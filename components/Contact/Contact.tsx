@@ -10,8 +10,6 @@ import {
 } from '@mantine/core';
 import classes from "./Contact.module.css";
 
-const contactEmail = String(process.env.NEXT_PUBLIC_CONTACT_EMAIL);
-
 export default function Contact() {
 
     const openInNewTab = (url: string): void => {
@@ -31,12 +29,12 @@ export default function Contact() {
                 <br/>
                 <Anchor
                     onClick={() => openInNewTab(
-                    `mailto:${contactEmail}`)}
+                    `mailto:${String(process.env.NEXT_PUBLIC_CONTACT_EMAIL)}`)}
                     underline="always"
                 >
                     Enzo Kim
                 </Anchor>
-                <CopyButton value={contactEmail}>
+                <CopyButton value={String(process.env.NEXT_PUBLIC_CONTACT_EMAIL)}>
                     {({ copied, copy }) => (
                         <Button color={copied ? 'teal' : 'pink'} onClick={copy} size={"xs"} ml={"xs"}>
                             {copied ? 'Copied email!' : 'Copy email'}

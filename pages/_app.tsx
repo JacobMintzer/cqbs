@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <MantineProvider theme={theme}>
         <Head>
-            <title>Columbia Queer Business Club</title>
+            <title>Columbia Queer Business Society</title>
             <meta
                 name="viewport"
                 content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
