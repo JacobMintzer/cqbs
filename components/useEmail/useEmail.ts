@@ -6,7 +6,10 @@ export function useEmail() {
         return res.json();
     }
 
-    const { data, error } = useSWR('/api/email', fetcher);
+    const { data, error } = useSWR('/api/email', fetcher, {
+        revalidateOnFocus: false,
+
+    });
 
     return {
         e: data,

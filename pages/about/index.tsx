@@ -6,14 +6,12 @@ import Mission from "@/components/Mission/Mission";
 
 // if you don't follow these types and structure, it will cause an error
 interface missionDataStructure {
-    title: String; // title of the mission page
-    missionStatement: Array<String>; //mission statement, array of paragraphs
-    imgSrc: String; // source of the mission image can be url or image from
-                    // public folder
-    imgAlt: String; // describe the image for visually impaired
+    title: string; // title of the mission page
+    missionStatement: Array<string>; //mission statement, array of paragraphs
+    imgAlt: string; // describe the image for visually impaired
 };
 
-// EDIT HERE ONLY
+// EDIT HERE
 const mission : missionDataStructure = {
     title: "Our Mission",
     missionStatement: ["The Columbia Queer Business Society (CQBS) is the" +
@@ -27,16 +25,18 @@ const mission : missionDataStructure = {
         " consulting, and technology sectors. Some of our past partners" +
         " include Goldman Sachs, McKinsey & Company, Google, and Bain &" +
         " Company."],
-    imgSrc: "https://news.columbia.edu/sites/default/files/styles/cu_crop/public/content/2021/columbia-rainlow-pride-2021.png?itok=A1yDaEv9",
     imgAlt: "Columbia Library with Pride Colors"
 }
+// path of the image
+import imgSrc from "@/public/columbiaRainbow.png";
+// EDIT END
 
 export default function AboutPage() {
     return (
         <Mission
             title={mission.title}
             missionStatement={mission.missionStatement}
-            imgSrc={mission.imgSrc}
+            imgSrc={imgSrc}
             imgAlt={mission.imgAlt}
         />
     );

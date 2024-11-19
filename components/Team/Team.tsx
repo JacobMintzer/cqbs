@@ -1,5 +1,6 @@
 import classes from './Team.module.css';
 import {Flex, Image, Title} from "@mantine/core";
+import NextImage from "next/image";
 
 export default function Team(props : any) {
 
@@ -13,7 +14,8 @@ export default function Team(props : any) {
                         h={200}
                         w={200}
                         alt={`Picture of ${member.name}`}
-                        fallbackSrc={"/avatar2.png"}
+                        component={NextImage}
+                        placeholder={"blur"}
                     />
                 </div>
                 <h2 className={classes.h}>{member.name}</h2>

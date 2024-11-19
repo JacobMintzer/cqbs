@@ -9,16 +9,16 @@ import {useEmail} from "@/components/useEmail/useEmail";
 
 export default function Contact() {
 
-    const { e, isLoading, isError } = useEmail();
+    //const { e, isLoading, isError } = useEmail();
 
     const openInNewTab = (url: string): void => {
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
         if (newWindow) newWindow.opener = null
     }
 
-    if (isLoading || isError) return <div></div>;
+    //if (isLoading || isError) return <div></div>;
 
-
+    const e = {e: String(process.env.NEXT_PUBLIC_EMAIL_ENCODED)};
 
     return(
         <Flex direction={"column"} justify={"center"} align={"center"} className={classes.topDiv}>

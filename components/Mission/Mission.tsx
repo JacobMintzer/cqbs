@@ -1,8 +1,6 @@
 import classes from './Mission.module.css';
 import {Flex, Image, Text, Title} from "@mantine/core";
-import NextImage from 'next/image'
-
-//TODO: CSS needs work
+import NextImage from 'next/image';
 
 export default function Mission(props : any) {
     return <div>
@@ -46,6 +44,8 @@ export default function Mission(props : any) {
                    src={props.imgSrc}
                    alt={props.imgAlt}
                    mt={"xs"}
+                   component={NextImage}
+                   placeholder={"blur"}
             />
         </Flex>
     </div>;

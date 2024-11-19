@@ -6,14 +6,22 @@ import Team from '../../../components/Team/Team';
 import React from "react";
 import Footer from "@/components/Footer/Footer";
 import {Flex} from "@mantine/core";
+import NextImage from "next/image";
 
 // This is how you should format each member
 interface MemberType {
-    name: String; // name of the member
-    role: String; // role of the member
-    about: String; // about or major
-    pic: String; // source of the image, can be url or image from public folder
+    name: string; // name of the member
+    role: string; // role of the member
+    about: string; // about or major
+    pic: any; // source of the image, can be url or image from public folder
 }
+
+// Import member photos (unfortunately, can't automate this)
+import Enzo from "@/public/Enzo.png";
+import Bobby from "@/public/Bobby.jpg";
+import Sai from "@/public/Sai.jpg";
+import AJ from "@/public/AJ.jpg";
+import Artemis from "@/public/Artemis.jpg";
 
 // Array of MemberType
 const title : string = "Members of the Board";
@@ -23,31 +31,31 @@ const team : Array<MemberType> = [
         name: "Enzo Kim",
         role: "President",
         about: "Economics and Creative Writing",
-        pic: "/Enzo.png"
+        pic: Enzo
     },
     {
         name: "Bobby Veiham",
         role: "Vice President",
         about: "Computer Science",
-        pic: "/Bobby.jpg"
+        pic: Bobby
     },
     {
         name: "Sai Sai",
         role: "Secretary",
         about: "Psychology",
-        pic: "/Sai.jpg"
+        pic: Sai
     },
     {
         name: "A.J. Lebenns",
         role: "Advisor",
         about: "Economics",
-        pic: "/AJ.jpg"
+        pic: AJ
     },
     {
         name: "Artemis Edison",
         role: "Treasurer",
         about: "Financial History",
-        pic: "/Artemis.jpg"
+        pic: Artemis
     }
 ];
 

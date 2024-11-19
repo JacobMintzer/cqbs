@@ -30,6 +30,7 @@
     width: 30vw;
     @media (max-width: $mantine-breakpoint-md) {
         margin: 1em;
+        height: auto;
         width: 80vw;
     }
 }
