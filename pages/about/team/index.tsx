@@ -13,10 +13,11 @@ interface MemberType {
     name: string; // name of the member
     role: string; // role of the member
     about: string; // about or major
-    pic: any; // source of the image, can be url or image from public folder
+    pic: object; // imageObject imported from the public folder
 }
 
-// Import member photos (unfortunately, can't automate this)
+// Import member photos (unfortunately, can't automate this and its for
+// optimization purposes)
 import Enzo from "@/public/Enzo.png";
 import Bobby from "@/public/Bobby.jpg";
 import Sai from "@/public/Sai.jpg";
@@ -54,13 +55,12 @@ const team : Array<MemberType> = [
     {
         name: "Artemis Edison",
         role: "Treasurer",
-        about: "Financial History",
+        about: "Economics History",
         pic: Artemis
     }
 ];
 
 export default function TeamPage() {
-
     return (
         <Flex direction={"column"} gap={"xs"}>
             <Team

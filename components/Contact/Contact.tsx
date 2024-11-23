@@ -5,7 +5,6 @@ import {
     Flex, Anchor, CopyButton
 } from '@mantine/core';
 import classes from "./Contact.module.css";
-import {useEmail} from "@/components/useEmail/useEmail";
 
 export default function Contact() {
 
