@@ -27,10 +27,9 @@ const links = [
         ],
     },
     { link: '/students', label: 'Prospective Students' },
+    { link: '/notion', label: 'Blog' },
     { link: '/contact', label: 'Contact Us' },
 ];
-
-//TODO: mobile header menu needs to be made.
 
 export default function HeaderMenu() {
     const [opened, { toggle }] = useDisclosure(false);

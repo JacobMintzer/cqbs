@@ -13,9 +13,7 @@ export default function ContactUs() {
 
     return (
         <div>
-            <Contact
-
-            />
+            <Contact />
         </div>
     );
 }

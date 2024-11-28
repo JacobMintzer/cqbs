@@ -33,8 +33,8 @@ export default function App({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
         </Flex>
 
-        <SpeedInsights />
-        <Analytics />
+        <SpeedInsights/>
+        <Analytics/>
     </MantineProvider>
   );
 }
