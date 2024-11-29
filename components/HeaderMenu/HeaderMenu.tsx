@@ -4,9 +4,7 @@ import {
     Center,
     Burger,
     Container,
-    useMantineColorScheme,
-    Text,
-    useComputedColorScheme
+    Flex
 } from '@mantine/core';
 import {useDisclosure, useElementSize} from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
@@ -35,32 +33,29 @@ export default function HeaderMenu() {
     const [opened, { toggle }] = useDisclosure(false);
 
     const router = useRouter();
-    const { setColorScheme } = useMantineColorScheme();
 
-    const items = links.map((link) => {
-        const menuItems = link.links?.map((item) => (
+    const items = links.map((link, i) => {
+        const menuItems = link.links?.map((item,j) => (
             <Menu.Item
-                key={item.link}
+                key={`${link.label}-${item.label}-${i}-${j}`}
                 onClick={() => router.push(item.link).catch((error) => console.log(error))}
             >{item.label}</Menu.Item>
         ));
 
         if (menuItems) {
             return (
-                <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
+                <Menu key={`${link.label}-${i}-l`} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
                     <Menu.Target>
-                        <a
+                        <Link
                             href={link.link}
                             className={classes.link}
-                            onClick={(event) => {
-                                event.preventDefault();
-                            }}
+                            prefetch={true}
                         >
                             <Center>
                                 <span className={classes.linkLabel}>{link.label}</span>
                                 <IconChevronDown size="0.9rem" stroke={1.5} />
                             </Center>
-                        </a>
+                        </Link>
                     </Menu.Target>
                     <Menu.Dropdown>{menuItems}</Menu.Dropdown>
                 </Menu>
@@ -69,13 +64,9 @@ export default function HeaderMenu() {
 
         return (
             <Link
-              key={link.label}
+              key={`k-${link.label}-${i}`}
               href={link.link}
               className={classes.link}
-              onClick={(event) => {
-                    event.preventDefault();
-                    router.push(link.link).catch((error) => {console.log(error)});
-              }}
               prefetch={true}
             >
                 {link.label}
@@ -83,10 +74,10 @@ export default function HeaderMenu() {
         );
     });
 
-    const itemsMobile = links.map((link) => {
-        const menuItems = link.links?.map((item) => (
+    const itemsMobile = links.map((link, i) => {
+        const menuItems = link.links?.map((item, j) => (
             <Menu.Item
-                key={item.link}
+                key={`${i}-${link.label}-${item.label}-${j}`}
                 onClick={() => router.push(item.link).catch((error) => console.log(error))}
                 className={classes.mobileItem}
             >
@@ -107,7 +98,7 @@ export default function HeaderMenu() {
 
         return (
             <Menu.Item
-                key={link.label}
+                key={`m-${link.label}-${i}`}
                 onClick={() => {
                     router.push(link.link).catch((error) => {console.log(error)});
                 }}
@@ -120,24 +111,28 @@ export default function HeaderMenu() {
 
     return (
         <header className={classes.header}>
-            <Container size="md">
-                <Container className={classes.inner}>
-                    <Image
-                        onClick={() => router.push('/').catch((error) => console.log(error))}
-                        src={'/cqbsLogo.png'}
-                        h={40}
-                        className={classes.logo}
-                        alt={"darkLogo"}
-                        darkHidden
-                    />
-                    <Image
-                        onClick={() => router.push('/').catch((error) => console.log(error))}
-                        src={'/cqbsLogoLight.png'}
-                        h={40}
-                        className={classes.logo}
-                        alt={"lightLogo"}
-                        lightHidden
-                    />
+            <Container>
+                <Flex direction="row" justify="space-between" pt="0.4rem">
+                    <Link href="/">
+                        <Image
+                            src={'/cqbsLogo.png'}
+                            h={40}
+                            w="auto"
+                            className={classes.logo}
+                            alt={"darkLogo"}
+                            darkHidden
+                            fit="contain"
+                        />
+                        <Image
+                            src={'/cqbsLogoLight.png'}
+                            h={40}
+                            w="auto"
+                            className={classes.logo}
+                            alt={"lightLogo"}
+                            lightHidden
+                            fit="contain"
+                        />
+                    </Link>
                     <Group gap={5} visibleFrom="sm">
                         {items}
                         <ColorSchemeToggle />
@@ -151,7 +146,7 @@ export default function HeaderMenu() {
                             {itemsMobile}
                         </Menu.Dropdown>
                     </Menu>
-                </Container>
+                </Flex>
             </Container>
         </header>
     );

@@ -39,7 +39,7 @@ export default function NotionPage() {
         isLoading,
         isError
     } = useRecordMap();
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <div>&nbsp;</div>;
 
     console.log(data.block[Object.keys(data.block)[0]].value.format.page_cover);
     const cover = `https://www.notion.so/image/${

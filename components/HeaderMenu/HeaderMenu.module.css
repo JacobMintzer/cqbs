@@ -15,7 +15,6 @@
     height: rem(56px);
     display: flex;
     justify-content: space-between;
-    align-items: center;
     position: sticky;
 }
 
