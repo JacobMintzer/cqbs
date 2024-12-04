@@ -26,6 +26,8 @@ export default function App({ Component, pageProps }: AppProps) {
             <meta property="og:description"
                   content="Website of the Columbia Queer Business Society"/>
             <meta property="og:url" content="https://cqbs.vercel.app"/>
+            <meta name="google-site-verification"
+                  content="2uJhMYtogLkguDFtTnMcd48c8CpS0s9Am-4X_vwF4_M"/>
             <link rel="shortcut icon" href="/cqbsFavicon.png"/>
         </Head>
         <HeaderMenu/>
