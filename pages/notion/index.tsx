@@ -4,8 +4,15 @@ import 'katex/dist/katex.min.css';
 
 import dynamic from 'next/dynamic'
 import {NotionRenderer} from "react-notion-x";
-import {useRecordMap} from "@/components/useRecordMap/useRecordMap";
 import {useComputedColorScheme, Image, Title, Flex} from "@mantine/core";
+import {GetStaticProps} from "next";
+import {ExtendedRecordMap} from "notion-types";
+import { NotionAPI } from 'notion-client';
+
+
+interface Props {
+    post: ExtendedRecordMap;
+}
 
 const Collection = dynamic(() =>
     import('react-notion-x/build/third-party/collection').then(
@@ -32,14 +39,21 @@ const Modal = dynamic(
     }
 )
 
-export default function NotionPage() {
+export const getStaticProps: GetStaticProps<Props> = async () => {
+    const notion = new NotionAPI();
+    const recordMap = await notion.getPage('14c3fe59819b8061a1aee20f6d575a02');
+    return {
+        props: {
+            post: recordMap
+        },
+        // revalidate every 10 min
+        revalidate: 600
+    };
+}
+
+export default function NotionPage({post}: Props) {
     const computedColorScheme = useComputedColorScheme('light', {getInitialValueInEffect: true});
-    const {
-        data,
-        isLoading,
-        isError
-    } = useRecordMap();
-    if (isLoading) return <div>&nbsp;</div>;
+    const data = post;
 
     console.log(data.block[Object.keys(data.block)[0]].value.format.page_cover);
     const cover = `https://www.notion.so/image/${
