@@ -17,7 +17,7 @@ import {
 import Link from "next/link";
 const links = [
     {
-        link: '#1',
+        link: '#',
         label: 'About',
         links: [
             { link: '/about', label: 'Mission' },
@@ -143,11 +143,6 @@ export default function HeaderMenu() {
                         offset={30}
                         onClose={toggle}
                         floatingStrategy={'absolute'}
-                        styles={{
-                            dropdown: {
-                                backgroundColor: 'light-dark(var(--mantine-color-dark-0), var(--mantine-color-dark-6))'
-                            }
-                        }}
                     >
                         <Menu.Target>
                             <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
