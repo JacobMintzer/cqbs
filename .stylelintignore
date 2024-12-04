@@ -1,2 +1,8 @@
 .next
 out
+.github
+.idea
+.vscode
+node_modules
+.storybook
+.yarn

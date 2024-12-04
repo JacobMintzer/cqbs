@@ -138,11 +138,21 @@ export default function HeaderMenu() {
                         <ColorSchemeToggle />
                     </Group>
 
-                    <Menu width={"90%"} offset={30} onClose={toggle} floatingStrategy={'absolute'}>
+                    <Menu
+                        width={"90%"}
+                        offset={30}
+                        onClose={toggle}
+                        floatingStrategy={'absolute'}
+                        styles={{
+                            dropdown: {
+                                backgroundColor: 'light-dark(var(--mantine-color-dark-0), var(--mantine-color-dark-6))'
+                            }
+                        }}
+                    >
                         <Menu.Target>
                             <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
                         </Menu.Target>
-                        <Menu.Dropdown hiddenFrom={"sm"}>
+                        <Menu.Dropdown hiddenFrom="sm" color="white">
                             {itemsMobile}
                         </Menu.Dropdown>
                     </Menu>
