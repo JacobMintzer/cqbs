@@ -29,15 +29,21 @@ const mission : missionDataStructure = {
 }
 // path of the image
 import imgSrc from "@/public/columbiaRainbow.webp";
+import Head from "next/head";
 // EDIT END
 
 export default function AboutPage() {
     return (
-        <Mission
-            title={mission.title}
-            missionStatement={mission.missionStatement}
-            imgSrc={imgSrc}
-            imgAlt={mission.imgAlt}
-        />
+        <>
+            <Head>
+                <title>Our Mission | Columbia Queer Business Society</title>
+            </Head>
+            <Mission
+                title={mission.title}
+                missionStatement={mission.missionStatement}
+                imgSrc={imgSrc}
+                imgAlt={mission.imgAlt}
+            />
+        </>
     );
 }

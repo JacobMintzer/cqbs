@@ -1,7 +1,9 @@
 import Students from '../../components/Students/Students';
+import Head from "next/head";
+import React from "react";
 
-const title : string = "Welcome Prospective Students";
-const subtitle : string = "Welcome! We're thrilled to have you here. Please think" +
+const title: string = "Welcome Prospective Students";
+const subtitle: string = "Welcome! We're thrilled to have you here. Please think" +
     " of" +
     " us as a helpful resource – we are happy to delve into what life is" +
     " like at CQBS or simply chat. If you'd like to connect with a current" +
@@ -9,12 +11,17 @@ const subtitle : string = "Welcome! We're thrilled to have you here. Please thin
     " as soon as possible!";
 
 export default function ProspectiveStudentsPage() {
-  return (
-    <div>
-      <Students
-          title={title}
-          subtitle={subtitle}
-      />
-    </div>
-  );
+    return (
+        <>
+            <Head>
+                <title>Potential Students | Columbia Queer Business
+                    Society
+                </title>
+            </Head>
+            <Students
+                title={title}
+                subtitle={subtitle}
+            />
+        </>
+    );
 }

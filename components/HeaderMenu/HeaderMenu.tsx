@@ -7,35 +7,51 @@ import {
     Flex
 } from '@mantine/core';
 import {useDisclosure} from '@mantine/hooks';
-import { IconChevronDown } from '@tabler/icons-react';
+import {IconChevronDown} from '@tabler/icons-react';
 import classes from './HeaderMenu.module.css';
-import { useRouter } from 'next/router'
-import { Image } from '@mantine/core';
+import {useRouter} from 'next/router'
+import {Image} from '@mantine/core';
 import {
     ColorSchemeToggle
 } from "@/components/ColorSchemeToggle/ColorSchemeToggle";
 import Link from "next/link";
+
 const links = [
     {
         link: '#',
         label: 'About',
         links: [
-            { link: '/about', label: 'Mission' },
-            { link: '/about/team', label: 'Team' },
+            {
+                link: '/about',
+                label: 'Mission'
+            },
+            {
+                link: '/about/team',
+                label: 'Team'
+            },
         ],
     },
-    { link: '/students', label: 'Prospective Students' },
-    { link: '/notion', label: 'Blog' },
-    { link: '/contact', label: 'Contact Us' },
+    {
+        link: '/students',
+        label: 'Prospective Students'
+    },
+    {
+        link: '/notion',
+        label: 'Blog'
+    },
+    {
+        link: '/contact',
+        label: 'Contact Us'
+    },
 ];
 
 export default function HeaderMenu() {
-    const [opened, { toggle }] = useDisclosure(false);
+    const [opened, {toggle}] = useDisclosure(false);
 
     const router = useRouter();
 
     const items = links.map((link, i) => {
-        const menuItems = link.links?.map((item,j) => (
+        const menuItems = link.links?.map((item, j) => (
             <Menu.Item
                 key={`${link.label}-${item.label}-${i}-${j}`}
                 onClick={() => router.push(item.link).catch((error) => console.log(error))}
@@ -44,7 +60,8 @@ export default function HeaderMenu() {
 
         if (menuItems) {
             return (
-                <Menu key={`${link.label}-${i}-l`} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
+                <Menu key={`${link.label}-${i}-l`} trigger="hover"
+                      transitionProps={{exitDuration: 0}} withinPortal>
                     <Menu.Target>
                         <Link
                             href={link.link}
@@ -52,8 +69,9 @@ export default function HeaderMenu() {
                             prefetch={true}
                         >
                             <Center>
-                                <span className={classes.linkLabel}>{link.label}</span>
-                                <IconChevronDown size="0.9rem" stroke={1.5} />
+                                <span
+                                    className={classes.linkLabel}>{link.label}</span>
+                                <IconChevronDown size="0.9rem" stroke={1.5}/>
                             </Center>
                         </Link>
                     </Menu.Target>
@@ -64,10 +82,10 @@ export default function HeaderMenu() {
 
         return (
             <Link
-              key={`k-${link.label}-${i}`}
-              href={link.link}
-              className={classes.link}
-              prefetch={true}
+                key={`k-${link.label}-${i}`}
+                href={link.link}
+                className={classes.link}
+                prefetch={true}
             >
                 {link.label}
             </Link>
@@ -89,9 +107,9 @@ export default function HeaderMenu() {
             return (
                 <div key={`${link.label}+${link.link}`}>
                     <Menu.Label>{link.label}</Menu.Label>
-                    <Menu.Divider />
+                    <Menu.Divider/>
                     {menuItems}
-                    <Menu.Divider />
+                    <Menu.Divider/>
                 </div>
             );
         }
@@ -100,7 +118,9 @@ export default function HeaderMenu() {
             <Menu.Item
                 key={`m-${link.label}-${i}`}
                 onClick={() => {
-                    router.push(link.link).catch((error) => {console.log(error)});
+                    router.push(link.link).catch((error) => {
+                        console.log(error)
+                    });
                 }}
                 className={classes.mobileItem}
             >
@@ -115,28 +135,28 @@ export default function HeaderMenu() {
                 <Flex direction="row" justify="space-between" pt="0.4rem">
                     <Link href="/">
                         <Image
-                            src={'/cqbsLogo.png'}
+                            src={'/cqbsLogo.webp'}
                             h={40}
                             w="auto"
                             className={classes.logo}
-                            alt={"darkLogo"}
+                            alt={"cqbs logo on light mode"}
                             darkHidden
                             fit="contain"
 
                         />
                         <Image
-                            src={'/cqbsLogoLight.png'}
+                            src={'/cqbsLogoLight.webp'}
                             h={40}
                             w="auto"
                             className={classes.logo}
-                            alt={"lightLogo"}
+                            alt={"cqbs logo on dark mode"}
                             lightHidden
                             fit="contain"
                         />
                     </Link>
                     <Group gap={5} visibleFrom="sm">
                         {items}
-                        <ColorSchemeToggle />
+                        <ColorSchemeToggle/>
                     </Group>
 
                     <Menu
@@ -146,7 +166,9 @@ export default function HeaderMenu() {
                         floatingStrategy={'absolute'}
                     >
                         <Menu.Target>
-                            <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+                            <Burger opened={opened} onClick={toggle} size="sm"
+                                    hiddenFrom="sm"
+                                    aria-label="Open mobile menu"/>
                         </Menu.Target>
                         <Menu.Dropdown hiddenFrom="sm" color="white">
                             {itemsMobile}

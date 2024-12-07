@@ -23,6 +23,7 @@ import Bobby from "@/public/Bobby.webp";
 import Sai from "@/public/Sai.webp";
 import AJ from "@/public/AJ.webp";
 import Artemis from "@/public/Artemis.webp";
+import Head from "next/head";
 
 // Array of MemberType
 const title : string = "Members of the Board";
@@ -62,13 +63,18 @@ const team : Array<MemberType> = [
 
 export default function TeamPage() {
     return (
-        <Flex direction={"column"} gap={"xs"}>
-            <Team
-                title={title}
-                subtitle={subtitle}
-                team={team}
-            />
-            <Footer />
-        </Flex>
+        <>
+            <Head>
+                <title>Our Team | Columbia Queer Business Society</title>
+            </Head>
+            <Flex direction={"column"} gap={"xs"}>
+                <Team
+                    title={title}
+                    subtitle={subtitle}
+                    team={team}
+                />
+                <Footer />
+            </Flex>
+        </>
     );
 }

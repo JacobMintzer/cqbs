@@ -1,4 +1,6 @@
 import Contact from "@/components/Contact/Contact";
+import Head from "next/head";
+import React from "react";
 
 const title = "Contact Us";
 const subtitle = "If you would like to contact CQBS about anything, please" +
@@ -11,8 +13,11 @@ const bottomtitle = "We welcome all inquiries regarding Alumni Relations," +
 export default function ContactUs() {
 
     return (
-        <div>
+        <>
+            <Head>
+                <title>Contact Us | Columbia Queer Business Society</title>
+            </Head>
             <Contact />
-        </div>
+        </>
     );
 }

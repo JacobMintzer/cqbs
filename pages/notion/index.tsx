@@ -8,6 +8,8 @@ import {useComputedColorScheme, Image, Title, Flex} from "@mantine/core";
 import {GetStaticProps} from "next";
 import {ExtendedRecordMap} from "notion-types";
 import { NotionAPI } from 'notion-client';
+import Head from "next/head";
+import React from "react";
 
 
 interface Props {
@@ -64,28 +66,34 @@ export default function NotionPage({post}: Props) {
 
     const notionTitle = data.block[Object.keys(data.block)[0]].value.properties.title[0][0];
     return (
-        <Flex direction={"column"} gap={"md"}>
-            <Image src={cover} mt={"-7vh"} mah={"20vh"}/>
-            <Title
-                ta={"center"}
-                c={"var(--mantine-color-body)"}
-                style={{
-                    top: "-15vh",
-                    position: "relative",
-                    marginBottom: "-5vh"
-                }}
-            >
-                {notionTitle}
-            </Title>
-            <NotionRenderer
-                recordMap={data}
-                fullPage={false}
-                darkMode={computedColorScheme === 'dark'}
-                components={{
-                    Collection,
-                    Modal
-                }}
-            />
-        </Flex>
+        <>
+            <Head>
+                <title>Blog | Columbia Queer Business Society</title>
+            </Head>
+            <Flex direction={"column"} gap={"md"}>
+                <Image src={cover} mt={"-7vh"} mah={"20vh"}/>
+                <Title
+                    ta={"center"}
+                    c={"var(--mantine-color-body)"}
+                    style={{
+                        top: "-15vh",
+                        position: "relative",
+                        marginBottom: "-5vh"
+                    }}
+                >
+                    {notionTitle}
+                </Title>
+                <NotionRenderer
+                    recordMap={data}
+                    fullPage={false}
+                    darkMode={computedColorScheme === 'dark'}
+                    components={{
+                        Collection,
+                        Modal
+                    }}
+                />
+            </Flex>
+        </>
+
     );
 }
