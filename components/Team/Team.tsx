@@ -1,5 +1,5 @@
 import classes from './Team.module.css';
-import {Flex, Image, Title} from "@mantine/core";
+import {Flex, Image, SimpleGrid, Title} from "@mantine/core";
 import NextImage from "next/image";
 
 export default function Team(props : any) {
@@ -30,13 +30,17 @@ export default function Team(props : any) {
                 <Title order={1} className={classes.head}>
                     {props.title}
                 </Title>
-                <Title order={3} className={classes.sub}>
+                <Title order={2} className={classes.sub}>
                     {props.subtitle}
                 </Title>
             </Flex>
-            <div className={classes.team}>
+            <SimpleGrid cols={{
+                base: 1,
+                sm: 2,
+                lg: 3,
+            }} mx="auto">
                 {mapTeams}
-            </div>
+            </SimpleGrid>
         </Flex>
     );
 }
