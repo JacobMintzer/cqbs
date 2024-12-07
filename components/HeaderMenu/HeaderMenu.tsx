@@ -6,7 +6,7 @@ import {
     Container,
     Flex
 } from '@mantine/core';
-import {useDisclosure, useElementSize} from '@mantine/hooks';
+import {useDisclosure} from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './HeaderMenu.module.css';
 import { useRouter } from 'next/router'
@@ -87,12 +87,12 @@ export default function HeaderMenu() {
 
         if (menuItems) {
             return (
-                <>
+                <div key={`${link.label}+${link.link}`}>
                     <Menu.Label>{link.label}</Menu.Label>
                     <Menu.Divider />
                     {menuItems}
                     <Menu.Divider />
-                </>
+                </div>
             );
         }
 
@@ -122,6 +122,7 @@ export default function HeaderMenu() {
                             alt={"darkLogo"}
                             darkHidden
                             fit="contain"
+
                         />
                         <Image
                             src={'/cqbsLogoLight.png'}

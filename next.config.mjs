@@ -9,4 +9,9 @@ export default withBundleAnalyzer({
   eslint: {
     ignoreDuringBuilds: true,
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
 });

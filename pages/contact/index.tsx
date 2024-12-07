@@ -1,5 +1,4 @@
 import Contact from "@/components/Contact/Contact";
-import {useEmail} from "@/components/useEmail/useEmail";
 
 const title = "Contact Us";
 const subtitle = "If you would like to contact CQBS about anything, please" +

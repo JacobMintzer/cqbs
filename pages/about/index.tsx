@@ -28,7 +28,7 @@ const mission : missionDataStructure = {
     imgAlt: "Columbia Library with Pride Colors"
 }
 // path of the image
-import imgSrc from "@/public/columbiaRainbow.png";
+import imgSrc from "@/public/columbiaRainbow.webp";
 // EDIT END
 
 export default function AboutPage() {

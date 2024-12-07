@@ -16,13 +16,13 @@ interface MemberType {
     pic: object; // imageObject imported from the public folder
 }
 
-// Import member photos (unfortunately, can't automate this and its for
+// Import member photos (unfortunately, can't automate this, and it's for
 // optimization purposes)
-import Enzo from "@/public/Enzo.png";
-import Bobby from "@/public/Bobby.jpg";
-import Sai from "@/public/Sai.jpg";
-import AJ from "@/public/AJ.jpg";
-import Artemis from "@/public/Artemis.jpg";
+import Enzo from "@/public/Enzo.webp";
+import Bobby from "@/public/Bobby.webp";
+import Sai from "@/public/Sai.webp";
+import AJ from "@/public/AJ.webp";
+import Artemis from "@/public/Artemis.webp";
 
 // Array of MemberType
 const title : string = "Members of the Board";
