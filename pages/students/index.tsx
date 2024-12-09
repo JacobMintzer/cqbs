@@ -1,6 +1,7 @@
 import Students from '../../components/Students/Students';
 import Head from "next/head";
 import React from "react";
+import Script from "next/script";
 
 const title: string = "Welcome Prospective Students";
 const subtitle: string = "Welcome! We're thrilled to have you here. Please think" +

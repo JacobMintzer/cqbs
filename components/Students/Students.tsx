@@ -8,10 +8,12 @@ import {
     Text,
     Title,
     Flex,
-    LoadingOverlay, Box
+    LoadingOverlay
 } from '@mantine/core';
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDisclosure } from '@mantine/hooks';
+import Script from 'next/script'
+
 
 export default function Students(props : any) {
 
@@ -36,41 +38,6 @@ export default function Students(props : any) {
         },
     });
 
-    const handleSubmit = async (values : Object) => {
-        try {
-            setDisabled(true);
-            handleLoading.open();
-            await fetch('/api/submit', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(values)
-            }).then((response) => {
-                if (response.status === 200){
-                    setErr({
-                        status: response.status,
-                        message: "Your response has been successfully saved!"
-                    });
-                }
-                else {
-                    setErr({
-                        status: response.status,
-                        message: JSON.stringify(response.body)
-                    });
-                    setDisabled(false);
-                }
-                handleLoading.close();
-            })
-        } catch (e) {
-            setErr({
-                status: 500,
-                message: "Internal Error: please try again later"
-            });
-            setDisabled(false);
-            handleLoading.close();
-        }
-    }
 
     const handleButton = ()=> {
         if (err.status === -999)
@@ -92,14 +59,15 @@ export default function Students(props : any) {
     }
 
     return (
-        <Flex direction={"column"} justify={"center"} align={"center"} className={classes.topDiv}>
+        <Flex direction={"column"} justify={"center"} align={"center"}
+              className={classes.topDiv}>
             <Title order={1} ta={"center"}
                    mb={"md"} maw={"80%"}
             >
-                { props.title }
+                {props.title}
             </Title>
             <Text className={classes.sub} ta={"left"} mb={"md"} maw={"80%"}>
-                { props.subtitle }
+                {props.subtitle}
             </Text>
             <Flex pos={"relative"} w={"80%"} justify={"center"}>
                 <LoadingOverlay visible={loadingVisibility} zIndex={1000}
@@ -109,8 +77,33 @@ export default function Students(props : any) {
                                 }}/>
                 <form
                     onSubmit={form.onSubmit((values) => {
-                        handleSubmit(values);
-                    })} className={classes.form}>
+                        setDisabled(true);
+                        handleLoading.open();
+                        // @ts-ignore
+                        window.Pageclip.send("pr6JvYjb8ZXZsPTrnNr5ILRd99xjMu4d", "newStudent", values, (error, pgClipRes) => {
+
+                            if(error) {
+                                setErr({
+                                    status: 500,
+                                    message: "Internal Error: please try again later"
+                                })
+                                setDisabled(false);
+                            } else if (pgClipRes.data !== "ok") {
+                                setErr({
+                                    status: 400,
+                                    message: "Error submitting"
+                                })
+                                setDisabled(false);
+                            } else {
+                                setErr({
+                                    status: 200,
+                                    message: "Your response has been successfully saved!"
+                                })
+                            }
+                        });
+                        handleLoading.close();
+                    })}
+                    className={classes.form}>
                     <Fieldset disabled={disabled} variant={"unstyled"}>
                         <TextInput
                             withAsterisk
@@ -118,6 +111,7 @@ export default function Students(props : any) {
                             placeholder="your@columbia.edu"
                             key={form.key('email')}
                             {...form.getInputProps('email')}
+                            name="email"
                         />
                         <Group justify="flex-end" mt="md">
                             {handleButton()}
@@ -125,6 +119,7 @@ export default function Students(props : any) {
                     </Fieldset>
                 </form>
             </Flex>
+            <Script src="https://s.pageclip.co/v1/pageclip.js" strategy="beforeInteractive" />
         </Flex>
     );
 }
