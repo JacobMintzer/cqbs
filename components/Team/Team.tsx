@@ -1,10 +1,22 @@
 import classes from './Team.module.css';
 import {Flex, Image, SimpleGrid, Title} from "@mantine/core";
 import NextImage from "next/image";
+import {useEffect, useState} from "react";
+import {MemberType} from "@/pages/about/team";
 
-export default function Team(props : any) {
+export default function Team(props: {
+    team: MemberType[],
+    title: string,
+    subtitle: string
+}) {
+    const [url, setUrl] = useState<Location["host"]>();
 
-    const mapTeams = props.team.map((member : any) => {
+    useEffect(() => {
+        setUrl(window.location.host);
+    }, []);
+
+    console.log(url);
+    const mapTeams = props.team.map((member: MemberType) => {
         return (
             <div className={classes.member} key={member.name}>
                 <div>
@@ -16,13 +28,15 @@ export default function Team(props : any) {
                         alt={`Picture of ${member.name}`}
                         component={NextImage}
                         placeholder={"blur"}
+
                     />
                 </div>
                 <h2 className={classes.h}>{member.name}</h2>
                 <h3 className={classes.h}>{member.role}</h3>
                 <p>{member.about}</p>
             </div>
-        )});
+        )
+    });
 
     return (
         <Flex direction={"column"}>

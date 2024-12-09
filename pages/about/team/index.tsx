@@ -6,10 +6,9 @@ import Team from '../../../components/Team/Team';
 import React from "react";
 import Footer from "@/components/Footer/Footer";
 import {Flex} from "@mantine/core";
-import NextImage from "next/image";
 
 // This is how you should format each member
-interface MemberType {
+export interface MemberType {
     name: string; // name of the member
     role: string; // role of the member
     about: string; // about or major
@@ -23,6 +22,7 @@ import Bobby from "@/public/Bobby.webp";
 import Sai from "@/public/Sai.webp";
 import AJ from "@/public/AJ.webp";
 import Artemis from "@/public/Artemis.webp";
+import Sabrina from "@/public/Sabrina.webp";
 import Head from "next/head";
 
 // Array of MemberType
@@ -58,6 +58,12 @@ const team : Array<MemberType> = [
         role: "Treasurer",
         about: "Economic History",
         pic: Artemis
+    },
+    {
+        name: "Sabrina Hsu",
+        role: "VP of Allies",
+        about: "Neuroscience",
+        pic: Sabrina
     }
 ];
 
