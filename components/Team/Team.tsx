@@ -52,6 +52,7 @@ export default function Team(props: {
                 base: 1,
                 sm: 2,
                 lg: 3,
+                xl: 4
             }} mx="auto">
                 {mapTeams}
             </SimpleGrid>

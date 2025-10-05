@@ -4,8 +4,7 @@
 
 import Team from '../../../components/Team/Team';
 import React from "react";
-import Footer from "@/components/Footer/Footer";
-import {Flex} from "@mantine/core";
+import { Flex } from "@mantine/core";
 
 // This is how you should format each member
 export interface MemberType {
@@ -23,35 +22,37 @@ import Sai from "@/public/Sai.webp";
 import AJ from "@/public/AJ.webp";
 import Artemis from "@/public/Artemis.webp";
 import Sabrina from "@/public/Sabrina.webp";
+import Ashley from "@/public/Ashley.webp";
+import Justin from "@/public/Justin.webp";
 import Head from "next/head";
 
 // Array of MemberType
-const title : string = "Members of the Board";
-const subtitle : string = "Meet your current board members!";
-const team : Array<MemberType> = [
-    {
-        name: "Enzo Kim",
-        role: "President",
-        about: "Economics and Creative Writing",
-        pic: Enzo
-    },
-    {
-        name: "Bobby Veiham",
-        role: "Vice President",
-        about: "Computer Science",
-        pic: Bobby
-    },
+const title: string = "Members of the Board";
+const subtitle: string = "Meet your current board members!";
+const team: Array<MemberType> = [
     {
         name: "Sai Sai",
-        role: "Secretary",
+        role: "President",
         about: "Psychology",
         pic: Sai
     },
     {
-        name: "A.J. Lebenns",
+        name: "Enzo Kim",
+        role: "Vice President",
+        about: "Economics and Creative Writing",
+        pic: Enzo
+    },
+    {
+        name: "Ashley Wong",
+        role: "Vice President",
+        about: "Computer Science",
+        pic: Ashley
+    },
+    {
+        name: "Bobby Veiham",
         role: "Advisor",
-        about: "Economics",
-        pic: AJ
+        about: "Computer Science",
+        pic: Bobby
     },
     {
         name: "Artemis Edison",
@@ -60,10 +61,16 @@ const team : Array<MemberType> = [
         pic: Artemis
     },
     {
-        name: "Sabrina Hsu",
-        role: "VP of Allies",
-        about: "Neuroscience",
-        pic: Sabrina
+        name: "Justin Kiel",
+        role: "Secretary",
+        about: "Political Science",
+        pic: Justin
+    },
+    {
+        name: "A.J. Lebenns",
+        role: "Advisor",
+        about: "Economics",
+        pic: AJ
     }
 ];
 
@@ -79,7 +86,6 @@ export default function TeamPage() {
                     subtitle={subtitle}
                     team={team}
                 />
-                <Footer />
             </Flex>
         </>
     );

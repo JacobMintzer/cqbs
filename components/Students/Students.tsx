@@ -15,7 +15,7 @@ import { useDisclosure } from '@mantine/hooks';
 import Script from 'next/script'
 
 
-export default function Students(props : any) {
+export default function Students(props: any) {
 
     const [err, setErr] = useState({
         status: -999,
@@ -33,15 +33,15 @@ export default function Students(props : any) {
         },
 
         validate: {
-            email: (value) => (/^\S+@columbia.edu$/.test(value) ? null :
-            "Please enter your @columbia.edu email."),
+            email: (value) => (/^\S+@columbia.edu$/.test(value.toLowerCase()) ? null :
+                "Please enter your @columbia.edu email."),
         },
     });
 
 
-    const handleButton = ()=> {
+    const handleButton = () => {
         if (err.status === -999)
-            return(<Button type="submit">Submit</Button>);
+            return (<Button type="submit">Submit</Button>);
         else if (err.status === 200)
             return (
                 <>
@@ -60,9 +60,9 @@ export default function Students(props : any) {
 
     return (
         <Flex direction={"column"} justify={"center"} align={"center"}
-              className={classes.topDiv}>
+            className={classes.topDiv}>
             <Title order={1} ta={"center"}
-                   mb={"md"} maw={"80%"}
+                mb={"md"} maw={"80%"}
             >
                 {props.title}
             </Title>
@@ -71,36 +71,43 @@ export default function Students(props : any) {
             </Text>
             <Flex pos={"relative"} w={"80%"} justify={"center"}>
                 <LoadingOverlay visible={loadingVisibility} zIndex={1000}
-                                overlayProps={{
-                                    radius: "sm",
-                                    blur: 2
-                                }}/>
+                    overlayProps={{
+                        radius: "sm",
+                        blur: 2
+                    }} />
                 <form
-                    onSubmit={form.onSubmit((values) => {
+                    onSubmit={form.onSubmit(async ({ email }) => {
                         setDisabled(true);
                         handleLoading.open();
-                        // @ts-ignore
-                        window.Pageclip.send("pr6JvYjb8ZXZsPTrnNr5ILRd99xjMu4d", "newStudent", values, (error, pgClipRes) => {
+                        const response = await fetch('/api/new-student', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                email: email
+                            })
 
-                            if(error) {
-                                setErr({
-                                    status: 500,
-                                    message: "Internal Error: please try again later"
-                                })
-                                setDisabled(false);
-                            } else if (pgClipRes.data !== "ok") {
-                                setErr({
-                                    status: 400,
-                                    message: "Error submitting"
-                                })
-                                setDisabled(false);
-                            } else {
-                                setErr({
-                                    status: 200,
-                                    message: "Your response has been successfully saved!"
-                                })
-                            }
                         });
+                        if (response.ok) {
+                            setErr({
+                                status: 200,
+                                message: "Your response has been successfully saved!"
+                            })
+                        }
+                        else if (response.status >= 500) {
+                            setErr({
+                                status: 500,
+                                message: "Internal Error: please try again later"
+                            })
+                            setDisabled(false);
+                        } else if (response.status >= 400) {
+                            setErr({
+                                status: 400,
+                                message: "Error submitting"
+                            })
+                            setDisabled(false);
+                        }
                         handleLoading.close();
                     })}
                     className={classes.form}>

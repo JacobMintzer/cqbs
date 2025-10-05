@@ -9,15 +9,15 @@ export function ColorSchemeToggle() {
     // @ts-ignore
     const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true });
 
-  return (
-      <ActionIcon
-          onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
-          variant="light"
-          size="xl"
-          aria-label="Toggle color scheme"
-      >
-          <MdLightMode className={cx(classes.icon, classes.light)} stroke={"1.5"} />
-          <MdDarkMode className={cx(classes.icon, classes.dark)} stroke={"1.5"} />
-      </ActionIcon>
-  );
+    return (
+        <ActionIcon
+            onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
+            variant="light"
+            size="xl"
+            aria-label="Toggle color scheme"
+        >
+            <MdLightMode className={cx(classes.icon, classes.light)} stroke={"1.5"} />
+            <MdDarkMode className={cx(classes.icon, classes.dark)} stroke={"1.5"} />
+        </ActionIcon>
+    );
 }

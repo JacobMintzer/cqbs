@@ -3,15 +3,15 @@ import "prismjs/themes/prism-tomorrow.css";
 import 'katex/dist/katex.min.css';
 
 import dynamic from 'next/dynamic'
-import {NotionRenderer} from "react-notion-x";
-import {useComputedColorScheme, Image, Title, Flex} from "@mantine/core";
-import {GetStaticProps} from "next";
-import {ExtendedRecordMap} from "notion-types";
+import { NotionRenderer } from "react-notion-x";
+import { useComputedColorScheme, Image, Title, Flex } from "@mantine/core";
+import { GetStaticProps } from "next";
+import { ExtendedRecordMap } from "notion-types";
 import { NotionAPI } from 'notion-client';
 import Head from "next/head";
 import React from "react";
-
-
+import LightThemeLogo from "@/public/cqbsLogo.webp"
+import DarkThemeLogo from "@/public/cqbsLogoLight.webp"
 interface Props {
     post: ExtendedRecordMap;
 }
@@ -53,26 +53,24 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     };
 }
 
-export default function NotionPage({post}: Props) {
-    const computedColorScheme = useComputedColorScheme('light', {getInitialValueInEffect: true});
-    const data = post;
+export default function NotionPage({ post }: Props) {
+    const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true });
 
+    /*
     console.log(data.block[Object.keys(data.block)[0]].value.format.page_cover);
-    const cover = `https://www.notion.so/image/${
-        encodeURIComponent(data.block[Object.keys(data.block)[0]].value.format.page_cover)
-    }?table=block&id=${
-        Object.keys(data.block)[0]
-    }&cache=v2`;
+    const cover = `https://www.notion.so/image/${encodeURIComponent(data.block[Object.keys(data.block)[0]].value.format.page_cover)
+        }?table=block&id=${Object.keys(data.block)[0]
+        }&cache=v2`;
 
     const notionTitle = data.block[Object.keys(data.block)[0]].value.properties.title[0][0];
     return (
         <>
-            <Head>
-                <title>Blog | Columbia Queer Business Society</title>
-            </Head>
-            <Flex direction={"column"} gap={"md"}>
-                <Image src={cover} mt={"-7vh"} mah={"20vh"}/>
-                <Title
+        <Head>
+            <title>Blog | Columbia Queer Business Society</title>
+        </Head>
+            <Flex direction={"column"} gap={"md"} w={"40%"}>
+                {'<Image src={header.src} sizes="100%"/>'}
+        <Title
                     ta={"center"}
                     c={"var(--mantine-color-body)"}
                     style={{
@@ -81,9 +79,31 @@ export default function NotionPage({post}: Props) {
                         marginBottom: "-5vh"
                     }}
                 >
-                    {notionTitle}
+                    Coming Soon!
                 </Title>
-                <NotionRenderer
+            </Flex>
+        </>
+    )*/
+
+    return (
+        <>
+            <Head>
+                <title>Blog | Columbia Queer Business Society</title>
+            </Head>
+            <Title
+                ta={"center"}
+                c={"var(--mantine-color-text)"}
+
+                style={{
+                    fontSize: "3.5vw",
+                    position: "relative"
+                }}
+            >
+                Coming Soon!
+            </Title>
+            {
+                <></>
+            /*<NotionRenderer
                     recordMap={data}
                     fullPage={false}
                     darkMode={computedColorScheme === 'dark'}
@@ -91,8 +111,7 @@ export default function NotionPage({post}: Props) {
                         Collection,
                         Modal
                     }}
-                />
-            </Flex>
+                />*/}
         </>
 
     );

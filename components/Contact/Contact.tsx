@@ -13,7 +13,7 @@ export default function Contact() {
         if (newWindow) newWindow.opener = null;
     };
 
-    const e = { e: String(process.env.NEXT_PUBLIC_EMAIL_ENCODED) };
+    const cqbs_email = String(process.env.NEXT_PUBLIC_CONTACT_EMAIL);
 
     return (
         <Flex direction="column" justify="center" align="center" className={classes.topDiv}>
@@ -26,13 +26,13 @@ export default function Contact() {
                 <br />
                 <br />
                 <Anchor
-                  onClick={() => openInNewTab(
-                    `mailto:${atob(e.e)}`)}
-                  underline="always"
+                    onClick={() => openInNewTab(
+                        `mailto:${cqbs_email}`)}
+                    underline="always"
                 >
                     Enzo Kim
                 </Anchor>
-                <CopyButton value={atob(e.e)}>
+                <CopyButton value={cqbs_email}>
                     {({ copied, copy }) => (
                         <Button onClick={copy} size="xs" ml="xs">
                             {copied ? 'Copied email!' : 'Copy email'}
