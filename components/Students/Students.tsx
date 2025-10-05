@@ -33,7 +33,7 @@ export default function Students(props: any) {
         },
 
         validate: {
-            email: (value) => (/^\S+@columbia.edu$/.test(value.toLowerCase()) ? null :
+            email: (value: string) => (/^\S+@columbia.edu$/.test(value.toLowerCase()) ? null :
                 "Please enter your @columbia.edu email."),
         },
     });
