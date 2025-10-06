@@ -30,7 +30,7 @@ export default function Contact() {
                         `mailto:${cqbs_email}`)}
                     underline="always"
                 >
-                    Enzo Kim
+                    {process.env.NEXT_PUBLIC_CONTACT_NAME}
                 </Anchor>
                 <CopyButton value={cqbs_email}>
                     {({ copied, copy }) => (
